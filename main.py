@@ -7,6 +7,7 @@ with open(filename) as f:
     source = f.read()
 
 def findComplexity():
+    results = analyze(source)
     blocks = cc_visit(source)
 
     print("""
@@ -19,8 +20,6 @@ def findComplexity():
     41+          F (very high risk - error-prone, unstable block)
 ==================================================================
 """)
-
-
 
     for block in blocks:
         rank = cc_rank(block.complexity)
@@ -35,10 +34,19 @@ def raw_stats():
           f"Single comments: {results.single_comments}\n"
           f"Multi: {results.multi}\n"
           f"Blank: {results.blank}\n"
-          f"- Comment Stats\n"
-          f"    (C % L): {results.comments / results.lloc:.0%}\n"
-          f"    (C % S): {results.comments / results.sloc:.0%}\n"
-          f"    (C + M % L): {(results.comments + results.multi) / results.lloc:.0%}")
+          f"- Comment Stats\n")
+    
+    if results.lloc != 0:
+        print(f"    (C % L): {results.comments / results.lloc:.0%}\n"
+              f"    (C + M % L): {(results.comments + results.multi) / results.lloc:.0%}")
+    else:
+        print("LLOC is zero, cannot calculate comment stats.")
+    
+    if results.sloc != 0:
+        print(f"    (C % S): {results.comments / results.sloc:.0%}\n")
+    else:
+        print("SLOC is zero, cannot calculate comment stats.")
+
 
 
 print("File: ", filename)
