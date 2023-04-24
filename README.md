@@ -7,3 +7,12 @@ Steps to use this tool:
 - run `python3 main.py`
 - check the output in console
 
+## Output
+
+> Complexity Analysis
+
+<img src="https://github.com/AishwaryaPai20/Python-code-analysis/blob/main/complexity.jpg" width="1000" height="500" />
+
+> Raw Stats
+
+<img src="https://github.com/AishwaryaPai20/Python-code-analysis/blob/main/raw.jpg" width="1000" height="500" />
